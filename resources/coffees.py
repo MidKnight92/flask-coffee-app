@@ -27,3 +27,26 @@ def create_coffees():
 	print(model_to_dict(coffee), '<<<<<<<<This is model to dict')
 	coffee_dict = model_to_dict(coffee)
 	return jsonify(data=coffee_dict, status={'code': 201, 'message': 'Created - Success'})
+
+#Update Route
+@coffee.route('/<id>', methods=['PUT'])
+def update_coffee(id):
+	payload = request.get_json()
+	query = models.Coffee.update(**payload).where(models.Coffee.id ==id) 
+	query.execute()
+	return jsonify(data=model_to_dict(models.Coffee.get_by_id(id)), status={'code': 200, 'message': 'OK'})
+
+#Show Route
+
+#Delete Route 
+
+
+
+
+
+
+
+
+
+
+
