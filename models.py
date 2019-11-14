@@ -1,7 +1,7 @@
 import datetime
 from peewee import *
 
-DATABASE = SqlDatabase('coffees.sqlite')
+DATABASE = SqliteDatabase('coffees.sqlite')
 
 class Coffee(Model):
 	name = CharField()
@@ -17,3 +17,4 @@ def initialize():
 	DATABASE.create_tables([Coffee], safe=True)
 	print('TABLES CREATED!!')
 	DATABASE.close()		
+
