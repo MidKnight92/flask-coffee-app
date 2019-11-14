@@ -37,6 +37,14 @@ def update_coffee(id):
 	return jsonify(data=model_to_dict(models.Coffee.get_by_id(id)), status={'code': 200, 'message': 'OK'})
 
 #Show Route
+@coffee.route('/<id>', methods=['GET'])
+def show_coffe(id):
+	print(id)
+	coffee = models.Coffee.get_by_id(id)
+	return jsonify(data=model_to_dict(coffee), status={'code': 200, 'message': 'OK'})
+
+
+
 
 #Delete Route 
 
