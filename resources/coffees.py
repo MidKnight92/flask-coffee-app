@@ -14,3 +14,5 @@ def get_all_coffees():
 		return jsonify(data=coffees, status={"code":200, "message":"Success" })
 	except models.DoesNotExist:
 		return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
+
+		
