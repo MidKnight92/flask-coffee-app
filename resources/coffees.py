@@ -44,11 +44,12 @@ def show_coffe(id):
 	return jsonify(data=model_to_dict(coffee), status={'code': 200, 'message': 'OK'})
 
 
-
-
 #Delete Route 
-
-
+@coffee.route('/<id>', methods=['Delete'])
+def delete_coffee(id):
+	query = models.Coffee.delete().where(models.Coffee.id == id)
+	query.execute()
+	return jsonify(data='DELETED', status={'code': 200, 'message': 'OK'})
 
 
 
