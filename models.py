@@ -1,7 +1,17 @@
 import datetime
 from peewee import *
 
+from flask_login import UserMixin
+
 DATABASE = SqliteDatabase('coffees.sqlite')
+
+class User(UserMixin, Model):
+	username = CharField(unique=True)
+	email=CharField(unique=True)
+	password = CharField()
+
+	class Meta:
+		database = DATABASE
 
 class Coffee(Model):
 	name = CharField()
@@ -14,7 +24,7 @@ class Coffee(Model):
 
 def initialize():
 	DATABASE.connect()
-	DATABASE.create_tables([Coffee], safe=True)
+	DATABASE.create_tables([User, Coffee], safe=True)
 	print('TABLES CREATED!!')
 	DATABASE.close()		
 
