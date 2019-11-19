@@ -14,6 +14,7 @@ class User(UserMixin, Model):
 		database = DATABASE
 
 class Coffee(Model):
+	creator = ForeignKeyField(User, backref='coffees')
 	name = CharField()
 	origin = CharField()
 	acidity = CharField()
